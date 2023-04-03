@@ -9,6 +9,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural=gettext('Category')
 
 class ProjectStatus(models.IntegerChoices):
     Pending = 1, gettext('pending')
@@ -33,7 +35,13 @@ class Projects(models.Model):
         return self.title
 
 
+    class Meta:
+        verbose_name_plural = gettext('Project')
+
 class Task(models.Model):
     description = models.TextField()
     is_completed = models.BooleanField(default=False)
     project = models.ForeignKey(Projects, on_delete=models.CASCADE)
+
+     class Meta:
+            verbose_name_plural = gettext('Task')
